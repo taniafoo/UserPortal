@@ -5,6 +5,7 @@ import iconsIMG2 from "../../../assets/images/icons/c-massege.png";
 import iconsIMG from "../../../assets/images/icons/c-phone.png";
 import cornarShape1 from "../../../assets/images/shapes/cornoer-shape1.png";
 import cornarShape2 from "../../../assets/images/shapes/cornoer-shape2.png";
+
 class ContactPage extends Component {
   scrollTop() {
     window.scrollTo({
@@ -22,7 +23,6 @@ class ContactPage extends Component {
               <div className="col-lg-12">
                 <div className="breadcrumb-content">
                   <div className="page-outlined-text">
-                    <h1>Contact Us</h1>
                   </div>
                   <h2 className="page-title">Contact Us</h2>
                   <ul className="page-switcher">
@@ -39,14 +39,14 @@ class ContactPage extends Component {
               </div>
             </div>
           </div>
-        </div>
+          </div>
         {/* ===============  breadcrumb area end =============== */}
         {/* ===============  Contact wrapper start =============== */}
         <div className="contact-wrapper overflow-hidden">
           <div className="container pt-120 position-relative">
-            <div className="background-title text-style-one">
-              <h2>Contact Now</h2>
-            </div>
+          <h2 style={{ color: 'black', fontWeight: '700', fontSize: '48px', paddingBottom: '20px' }}>
+  Contact Now
+</h2>
             <div className="row">
               <div className="col-lg-6">
                 <div className="contact-card mt-0">
@@ -62,7 +62,7 @@ class ContactPage extends Component {
                   <div className="contact-info">
                     <h3 className="contact-title">Location</h3>
                     <Link onClick={this.scrollTop} to={"#"}>
-                      Digital Agency Network 20 Eastbourne Terrace, London
+                      WYD, Singapore
                     </Link>
                   </div>
                 </div>
@@ -79,10 +79,7 @@ class ContactPage extends Component {
                   <div className="contact-info">
                     <h3 className="contact-title">Phone</h3>
                     <Link onClick={this.scrollTop} to={"#"}>
-                      +012 3456 789102
-                    </Link>
-                    <Link onClick={this.scrollTop} to={"#"}>
-                      +012 3456 789102
+                      +65 1234 5678
                     </Link>
                   </div>
                 </div>
@@ -98,11 +95,9 @@ class ContactPage extends Component {
                   </div>
                   <div className="contact-info">
                     <h3 className="contact-title">Email</h3>
+              
                     <Link onClick={this.scrollTop} to={"#"}>
-                      info@example.com{" "}
-                    </Link>
-                    <Link onClick={this.scrollTop} to={"#"}>
-                      support@example.com{" "}
+                      wydsupport@example.com{" "}
                     </Link>
                   </div>
                 </div>
@@ -144,25 +139,25 @@ class ContactPage extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-12">
-              <div className="contact-map-wrap mt-120">
-                <div className="mapouter">
-                  <div className="gmap_canvas">
-                    <iframe
-                      title="Video"
-                      id="gmap_canvas"
-                      src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=9&ie=UTF8&iwloc=&output=embed"
-                    />
-                    <Link
-                      onClick={this.scrollTop}
-                      to={"https://123movies-to.org"}
-                    />
-                    <br />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  <div className="col-lg-12">
+    <div className="contact-map-wrap mt-120">
+      <div className="mapouter">
+        <div className="gmap_canvas">
+          <iframe
+            title="Singapore Map"
+            id="gmap_canvas"
+            src="https://maps.google.com/maps?q=Marina%20Bay%20Sands,%20Singapore&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            width="100%" height="500" frameBorder="0" style={{border: 0}}
+            allowFullScreen=""
+            aria-hidden="false"
+            tabIndex="0"
+          />
+          <Link onClick={this.scrollTop} to={"https://www.google.com/maps"} />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
         {/* ===============  Contact wrapper end =============== */}
       </>
