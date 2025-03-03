@@ -9,7 +9,10 @@
     "jquery": "^3.6.0",
     "js-datepicker": "^5.18.0",
     "moment": "^2.29.1",
+<<<<<<< HEAD
     "process": "^0.11.10",
+=======
+>>>>>>> origin/main
     "react": "^17.0.2",
     "react-countup": "^6.1.0",
     "react-datepicker": "^4.3.0",
@@ -18,7 +21,11 @@
     "react-modal-video": "^1.2.8",
     "react-moment": "^1.1.1",
     "react-router-dom": "^5.2.0",
+<<<<<<< HEAD
     "react-scripts": "^5.0.1",
+=======
+    "react-scripts": "4.0.3",
+>>>>>>> origin/main
     "react-video-pop": "^1.0.3",
     "react-wow": "^1.0.0",
     "sass": "^1.38.0",
