@@ -10,11 +10,43 @@ import SpeakerArea from "./SpeakerArea";
 import TestimonialArea from "./TestimonialArea";
 
 class HomePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchQuery: '',
+      price: 50, // Default price
+      events: [
+        { id: 1, location: 'Singapore', title: 'Proactive transformation requires embrace of technology.', price: 30, wowDelay: '200ms', wowDuration: '1500ms' },
+        { id: 2, location: 'Broadway, New York', title: 'Innovative approaches to modernizing industries.', price: 60, wowDelay: '400ms', wowDuration: '1500ms' },
+        { id: 3, location: 'Paris, France', title: 'Adapting to changing technologies for success.', price: 50, wowDelay: '200ms', wowDuration: '1500ms' },
+        { id: 4, location: 'London, UK', title: 'Embracing change for a brighter future.', price: 40, wowDelay: '200ms', wowDuration: '1500ms' },
+        { id: 5, location: 'Berlin, Germany', title: 'Empowering transformation through smart solutions.', price: 70, wowDelay: '200ms', wowDuration: '1500ms' }
+      ]
+    };
+  }
+
+  handleSearchQueryChange = (searchQuery) => {
+    this.setState({ searchQuery });
+  };
+
+  handlePriceChange = (price) => {
+    this.setState({ price });
+  };
+
+  filterEvents = () => {
+    const { searchQuery, price, events } = this.state;
+    return events.filter((event) =>
+      event.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      event.price <= price
+    );
+  };
+
   render() {
+    const filteredEvents = this.filterEvents();
+
     return (
       <div className="homepage">
-        {/* <!-- Start Preloader Area --> */}
-       
+        {/* Preloader */}
         <div className="preloader">
           <div className="loader">
             <span></span>
@@ -23,10 +55,19 @@ class HomePage extends Component {
             <span></span>
           </div>
         </div>
-        {/* <!-- End Preloader Area --> */}
-        {/* all section component import start */}
-        <HeroArea />
-        <PopularEventArea />
+
+        {/* Hero Area with Search & Price Filter */}
+        <HeroArea
+          searchQuery={this.state.searchQuery}
+          price={this.state.price}
+          onSearchQueryChange={this.handleSearchQueryChange}
+          onPriceChange={this.handlePriceChange}
+        />
+
+        {/* Pass Filtered Events to PopularEventArea */}
+        <PopularEventArea events={filteredEvents} />
+
+        {/* Other Sections */}
         <RecentSchedule />
         <AchiveMentCounter />
         <SpeakerArea />
@@ -34,8 +75,6 @@ class HomePage extends Component {
         <PricingArea />
         <EventTimer />
         <BlogArea />
-        {/* all section component import start */}
-
       </div>
     );
   }

@@ -24,7 +24,7 @@ import SpeakerThumb4 from "../../../assets/images/speaker/sb-speaker4.png";
 import SpeakerThumb5 from "../../../assets/images/speaker/sb-speaker5.png";
 
 // install Swiper modules
-SwiperCore.use([ Navigation]);
+SwiperCore.use([Navigation]);
 class HeroArea extends Component {
   scrollTop() {
     window.scrollTo({
@@ -38,14 +38,24 @@ class HeroArea extends Component {
       startDate: new Date(),
     };
   }
-  componentDidMount(){
-      new WOW.WOW().init()
+  componentDidMount() {
+    new WOW.WOW().init()
   }
   changeDatepickerHaldeller = (date) => {
     this.setState({ startDate: date });
   };
+
+  handlePriceChange = (e) => {
+    this.props.onPriceChange(e.target.value);
+  };
+
+  handleSearchQueryChange = (e) => {
+    this.props.onSearchQueryChange(e.target.value);
+  };
+
+
   render() {
-    const startDate = this.state.startDate;
+    const { startDate, price } = this.state;
     const sliderInit = {
       slidesPerView: 1,
       loop: true,
@@ -88,7 +98,7 @@ class HeroArea extends Component {
                       <h6>
                         <Link
                           onClick={this.scrollTop}
-                      
+
                           to={`${process.env.PUBLIC_URL}/speaker-details`}>
                           Rodrigo Ema
                         </Link>
@@ -99,7 +109,7 @@ class HeroArea extends Component {
                       <li>
                         <Link
                           onClick={this.scrollTop}
-                       
+
                           to={"#"}>
                           <i className="fab fa-facebook-f" />
                         </Link>
@@ -350,13 +360,13 @@ class HeroArea extends Component {
                           </ul>
                           <div className="slider-btns">
                             <Link
-                               onClick={this.scrollTop}
+                              onClick={this.scrollTop}
                               to={`${process.env.PUBLIC_URL}/event-details`}
                               className="primary-btn-fill">
                               Book Now
                             </Link>
                             <Link
-                               onClick={this.scrollTop}
+                              onClick={this.scrollTop}
                               to={`${process.env.PUBLIC_URL}/event-details`}
                               className="primary-btn-outline">
                               View Details
@@ -406,13 +416,13 @@ class HeroArea extends Component {
                           </ul>
                           <div className="slider-btns">
                             <Link
-                               onClick={this.scrollTop}
+                              onClick={this.scrollTop}
                               to={`${process.env.PUBLIC_URL}/event-details`}
                               className="primary-btn-fill">
                               Book Now
                             </Link>
                             <Link
-                               onClick={this.scrollTop}
+                              onClick={this.scrollTop}
                               to={`${process.env.PUBLIC_URL}/event-details`}
                               className="primary-btn-outline">
                               View Details
@@ -467,13 +477,14 @@ class HeroArea extends Component {
                         <div className="searchbar-input-group">
                           <input
                             type="text"
-                            placeholder="Event Location....."
+                            placeholder="Search things to do..."
                             id="search-location"
                           />
                         </div>
                       </div>
                       <div className="col-lg-4">
                         <div className="searchbar-input-group">
+                          <i className="bi bi-calendar2-week" />
                           {/* <input
                             type="text"
                             id="datepicker"
@@ -486,31 +497,39 @@ class HeroArea extends Component {
                             }
                             placeholderText="Date"
                           />
-                          <i className="bi bi-calendar2-week" />
                         </div>
                       </div>
+
+                      {/* Price Range Slider */}
                       <div className="col-lg-4">
                         <div className="searchbar-input-group">
-                          <div className="custom-select filter-options">
-                            <select>
-                              <option value={0}>Category</option>
-                              <option value={1}> Category 1</option>
-                              <option value={1}>Category 2</option>
-                              <option value={2}>Category 3</option>
-                              <option value={3}>Category 4</option>
-                              <option value={3}>Category 5</option>
-                            </select>
+                          <label htmlFor="price-range">Credit Range:</label>
+                          <input
+                            type="range"
+                            id="price-range"
+                            name="price-range"
+                            min="0"
+                            max="100"
+                            step="1"
+                            value={price}
+                            onChange={this.handlePriceChange}
+                          />
+                          <div className="price-range-labels">
+                            <span>0</span>
+                            <span className="price-value">{`${price}`}</span>
+                            <span>100</span>
                           </div>
                         </div>
                       </div>
+
                     </div>
                   </div>
                   <div className="col-lg-2">
                     <div className="search-submit">
                       <input
                         type="submit"
-                        value="Search Now"
-                        placeholder="Search Now"
+                        value="Search"
+                        placeholder="Search"
                       />
                     </div>
                   </div>
